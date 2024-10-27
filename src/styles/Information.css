@@ -1,0 +1,9 @@
+.information > h1 {
+    font-size: 1rem;
+}
+
+.personal, .experience {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
