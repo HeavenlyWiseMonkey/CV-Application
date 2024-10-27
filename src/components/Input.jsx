@@ -1,9 +1,9 @@
 import '../styles/InputArea.css'
 
-export default function Input({name, type="text"}) {
+export default function Input({name, type="text", value, onChange}) {
     const max = (type === 'date') ? new Date().toISOString().split("T")[0] : null;
     return <div className="inputArea">
         <label htmlFor={name}>{name} </label>
-        <input type={type} id={name} max={max}></input>
+        <input type={type} id={name} max={max} value={value} onChange={onChange} ></input>
     </div>
 }
