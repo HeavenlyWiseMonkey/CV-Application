@@ -2,6 +2,5 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 350px;
-    border-right: 3px solid black;
+    height: 800px;
 }

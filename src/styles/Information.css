@@ -2,8 +2,13 @@
     font-size: 1rem;
 }
 
-.personal, .experience {
+.information {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.date {
+    display: flex;
     gap: 10px;
 }
