@@ -8,23 +8,35 @@ import { resumeInformation } from './resumeInformation'
 
 function App() {
   const [resumeInfo, setResumeInfo] = useState(resumeInformation);
-  const [index, setIndex] = useState(0);
 
-  function handleProperty(e, ...property) {
-    if (property.length === 1) {
-      resumeInfo[property[0]] = e.target.value;
+  function handleProperty(e, ...args) {
+    if (args.length === 1) {
+      resumeInfo[args[0]] = e.target.value;
     }
     else {
-      (property[0] === 'education') ? resumeInfo.education[index][property[1]] = e.target.value :
-      resumeInfo.practical[index][property[1]] = e.target.value;
+      (args[0] === 'education') ? resumeInfo.education[resumeInfo.education.length-1][args[1]] = e.target.value :
+      resumeInfo.practical[resumeInfo.practical.length-1][args[1]] = e.target.value;
     }
     const newResumeInfo = {...resumeInfo}
     setResumeInfo(newResumeInfo);
   }
 
+  function handleSubmit(e, property) {
+    const newResumeInfo = {...resumeInfo};
+
+    e.preventDefault();
+    if (property === 'education') {
+      newResumeInfo.createEducation("", "", "", "");
+    }
+    else {
+      newResumeInfo.createPractical("", "", "", "", "");
+    }
+    setResumeInfo(newResumeInfo);
+  }
+
   return <div className="app">
-    <Form resumeInfo={resumeInfo} index={index} handleProperty={handleProperty}/>
-    <Resume resumeInfo={resumeInfo} index={index} />
+    <Form resumeInfo={resumeInfo} handleProperty={handleProperty} handleSubmit={handleSubmit} />
+    <Resume resumeInfo={resumeInfo} />
   </div>
 }
 
