@@ -5,9 +5,9 @@ export default function EducationalSection({resumeInfo}) {
 
     const degrees = education.map(degree => 
         <div key={degree.id} className="educational experience">
-            <h2>{degree.studyTitle}</h2>
-            <h2>{degree.schoolName}</h2>
-            <h3>{degree.studyStartDate} - {degree.studyEndDate}</h3>
+            {(degree.studyTitle) && <p className="study">{degree.studyTitle}</p>}
+            {(degree.schoolName) && <h2 className="school">{degree.schoolName}</h2>}
+            {(degree.studyStartDate && degree.studyEndDate) && <p className="date">{degree.studyStartDate} - {degree.studyEndDate}</p>}
         </div>
     );
 

@@ -1,7 +1,6 @@
 .resume {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 850px;
     border-left: 3px solid black;
 }

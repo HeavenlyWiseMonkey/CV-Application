@@ -10,6 +10,7 @@ import { resumeInformation } from './resumeInformation'
 function App() {
   const [resumeInfo, setResumeInfo] = useState(resumeInformation);
   const [curEdit, setCurEdit] = useState('');
+  const [headerColor, setHeaderColor] = useState('#702963');
 
   function handleProperty(e, ...args) {
     if (args.length === 1) {
@@ -59,8 +60,13 @@ function App() {
     setResumeInfo(newResumeInfo);
   }
 
+  function handleColor(e) {
+    setHeaderColor(e.target.value);
+    document.querySelector('.personal.section').style.backgroundColor = e.target.value;
+  }
+
   return <div className="app">
-    <Form resumeInfo={resumeInfo} handleProperty={handleProperty} handleSubmit={handleSubmit} handleEdit={handleEdit} />
+    <Form resumeInfo={resumeInfo} handleProperty={handleProperty} handleSubmit={handleSubmit} handleEdit={handleEdit} headerColor={headerColor} handleColor={handleColor} />
     <Resume resumeInfo={resumeInfo} />
     <EditDialog resumeInfo={resumeInfo} curEdit={curEdit} endEdit={endEdit} handleProperty={handleProperty} handleDelete={handleDelete} />
   </div>
