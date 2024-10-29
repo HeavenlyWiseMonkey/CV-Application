@@ -1,0 +1,16 @@
+.edit {
+    width: 1300px;
+}
+
+.editArea {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 10px;
+}
+
+.editArea > .box {
+    border: 3px solid black;
+    padding: 10px;
+}

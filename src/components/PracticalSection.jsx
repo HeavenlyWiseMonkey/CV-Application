@@ -7,7 +7,7 @@ export default function PracticalSection({resumeInfo}) {
         <div key={job.id} className="practical experience">
             <h2>{job.companyName}</h2>
             <h2>{job.positionTitle}</h2>
-            <h2>{job.responsibilities}</h2>
+            <h3>{job.responsibilities}</h3>
             <h3>{job.companyStartDate} - {job.companyEndDate}</h3>
         </div>
     );

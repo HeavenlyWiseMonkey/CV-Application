@@ -1,24 +1,31 @@
 import Input from './Input';
 import '../styles/Information.css';
 
-export default function EducationalInformation({resumeInfo, handleProperty, handleSubmit}) {
-    const education = resumeInfo.education[resumeInfo.education.length-1];
+function EducationalInputs({resumeInfo, handleProperty, index}) {
+    const education = resumeInfo.education[index];
 
-    return <div className="educational information">
-        <h1>Educational Information</h1>
+    return <div className="education inputs">
+        <Input name="School Name" value={education.schoolName} onChange={(e) => handleProperty(e, 'education', 'schoolName', index)} index={index} />
 
-        <Input name="School Name" value={education.schoolName} onChange={(e) => handleProperty(e, 'education', 'schoolName')} />
-
-        <Input name="Study Ttile" value={education.studyTitle} onChange={(e) => handleProperty(e, 'education', 'studyTitle')} />
+        <Input name="Study Ttile" value={education.studyTitle} onChange={(e) => handleProperty(e, 'education', 'studyTitle', index)} index={index} />
 
         <div className="date">
-            <Input name="Study Start Date" value={education.studyStartDate} onChange={(e) => handleProperty(e, 'education', 'studyStartDate')} />
+            <Input name="Study Start Date" value={education.studyStartDate} onChange={(e) => handleProperty(e, 'education', 'studyStartDate', index)} index={index} />
 
-            <Input name="Study End Date" value={education.studyEndDate} onChange={(e) => handleProperty(e, 'education', 'studyEndDate')} />
+            <Input name="Study End Date" value={education.studyEndDate} onChange={(e) => handleProperty(e, 'education', 'studyEndDate', index)} index={index} />
         </div>
-
-        <button onClick={(e) => handleSubmit(e, 'education')}>Submit</button>
-
     </div>
 }
 
+function EducationalInformation({resumeInfo, handleProperty, handleSubmit, handleEdit}) {
+    return <div className="educational information">
+        <h1>Educational Information</h1>
+        <EducationalInputs resumeInfo={resumeInfo} handleProperty={handleProperty} index={resumeInfo.education.length-1} />
+        <div>
+            <button type="button" onClick={() => handleEdit('education')}>Edit</button>
+            <button type="button" onClick={() => handleSubmit('education')}>Submit</button>
+        </div>
+    </div>
+}
+
+export {EducationalInformation, EducationalInputs};
